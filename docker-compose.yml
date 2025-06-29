@@ -1,0 +1,11 @@
+services:
+  pinecone-local:
+    image: ghcr.io/pinecone-io/pinecone-local:latest
+    container_name: pinecone-local
+    ports:
+      - "5081:5081"
+      - "54321:54321"
+    environment:
+      - PORT=5081
+      - PINECONE_HOST=0.0.0.0
+    restart: unless-stopped
