@@ -1,0 +1,54 @@
+# ── Python 
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# ── Node / Extension 
+# Node dependencies
+node_modules/
+
+# Build outputs (adjust if your extension build dir differs)
+extension/build/
+extension/dist/
+
+# npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ── Environment & Logs 
+# Environment variables
+.env
+*.env
+
+# Logs
+logs/
+*.log
+
+# ── IDEs & Editors 
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ── macOS / Windows system files
+.DS_Store
+Thumbs.db
+.Spotlight-V100
+.Trashes
