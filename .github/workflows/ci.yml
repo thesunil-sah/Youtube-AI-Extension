@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # Backend (Python/FastAPI)
+  backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint with flake8
+        run: |
+          source .venv/bin/activate
+          pip install flake8
+          flake8 backend
+
+      - name: Run tests
+        run: |
+          source .venv/bin/activate
+          pip install pytest
+          pytest
+
+  # Extension (Node.js) 
+  extension:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install and build
+        working-directory: extension
+        run: |
+          npm ci
+          npm run build
+
+      - name: Lint & test
+        working-directory: extension
+        run: |
+          npm run lint
+          npm test
